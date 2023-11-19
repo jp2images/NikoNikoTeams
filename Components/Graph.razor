@@ -1,0 +1,26 @@
+﻿@using System.IO
+@using Azure.Core
+@using Microsoft.Graph
+@using Microsoft.Graph.Models;
+
+
+<div>
+    <h2>Get the user's profile photo</h2>
+    @if (NeedConsent)
+    {
+        <p>Click below to authorize this app to read your profile photo using Microsoft Graph.</p>
+        <FluentButton Appearance="Appearance.Accent" Disabled="@IsLoading" @onclick="ConsentAndShow">Authorize</FluentButton>
+    }
+    @if (IsLoading)
+    {
+        <ProfileCard IsLoading="true" />
+    }
+    else if (!string.IsNullOrEmpty(@ErrorMessage))
+    {
+        <div class="error">@ErrorMessage</div>
+    }
+    else if (Profile != null)
+    {
+        <ProfileCard IsLoading="false" Profile="@Profile" UserPhotoUri="@UserPhotoUri" />
+    }
+</div>
