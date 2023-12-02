@@ -1,37 +1,38 @@
-﻿using Microsoft.JSInterop;
+﻿namespace NikoNikoTeams.Interop.TeamsSDK;
 
-namespace NikoNikoTeams.Interop.TeamsSDK;
+using Microsoft.JSInterop;
 
 public class MicrosoftTeams : InteropModuleBase
 {
-    protected override string ModulePath => "./js/TeamsJsBlazorInterop.js";
+  protected override string ModulePath => "./js/TeamsJsBlazorInterop.js";
 
-    public MicrosoftTeams(IJSRuntime jsRuntime) : base(jsRuntime) { }
+  public MicrosoftTeams(IJSRuntime jsRuntime) : base(jsRuntime) { }
 
-    public Task InitializeAsync()
+  public Task InitializeAsync()
+  {
+    return InvokeVoidAsync("initializeAsync");
+  }
+
+  public Task<TeamsContext> GetTeamsContextAsync()
+  {
+    return InvokeAsync<TeamsContext>("getContextAsync");
+  }
+
+  public Task RegisterOnSaveHandlerAsync(TeamsInstanceSettings settings)
+  {
+    return InvokeVoidAsync("registerOnSaveHandler", settings);
+  }
+
+  public Task<bool> IsInTeams()
+  {
+    try
     {
-        return InvokeVoidAsync("initializeAsync");
+      return InvokeAsync<bool>("inTeams");
     }
-
-    public Task<TeamsContext> GetTeamsContextAsync()
+    catch (JSException)
     {
-        return InvokeAsync<TeamsContext>("getContextAsync");
+      return Task.FromResult(false);
     }
-
-    public Task RegisterOnSaveHandlerAsync(TeamsInstanceSettings settings)
-    {
-        return InvokeVoidAsync("registerOnSaveHandler", settings);
-    }
-
-    public Task<bool> IsInTeams()
-    {
-        try
-        {
-            return InvokeAsync<bool>("inTeams");
-        }
-        catch (JSException)
-        {
-            return Task.FromResult(false);
-        }
-    }
+  }
 }
+

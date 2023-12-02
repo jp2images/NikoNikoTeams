@@ -1,13 +1,23 @@
-﻿namespace NikoNikoTeams.Components;
+﻿using Microsoft.AspNetCore.Components;
+using Microsoft.TeamsFx;
+using NikoNikoTeams.Interop.TeamsSDK;
+
+namespace NikoNikoTeams.Components;
 
 public partial class Welcome
 {
-  string _userName;
+  private string _userName;
+  private string _userPhotoUri;
   private string _city;
   private string _mobilePhone;
-  string _errorMessage;
-  bool _isInTeams;
-  bool _isLoading = true;
+  private string _errorMessage;
+  private bool _isInTeams;
+  private bool _isLoading = true;
+
+  [Inject] MicrosoftTeams TeamsFx { get; set; }
+  [Inject] TeamsUserCredential TeamsUserCredential { get; set; }
+
+
 
   protected override async Task OnAfterRenderAsync(bool firstRender)
   {
@@ -15,12 +25,14 @@ public partial class Welcome
 
     if (firstRender)
     {
-      _isInTeams = await MicrosoftTeams.IsInTeams();
+      _isInTeams = await TeamsFx.IsInTeams();
 
       if (_isInTeams)
       {
-        var user = await teamsUserCredential.GetUserInfoAsync();
+        var user = await TeamsUserCredential.GetUserInfoAsync();
         _userName = user.DisplayName;
+
+        //_userPhotoUri = user.;
         //_userName = user.PreferredUserName; //This is the email address
         //_city = user.City;
         //_mobilePhone = user.MobilePhone;

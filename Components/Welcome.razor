@@ -1,9 +1,9 @@
 ﻿@using Microsoft.Extensions.Configuration
 @using Microsoft.AspNetCore.Hosting
 @using Microsoft.Extensions.Hosting
-@inject TeamsFx teamsfx
-@inject TeamsUserCredential teamsUserCredential
-@inject MicrosoftTeams MicrosoftTeams
+@* @inject TeamsFx teamsfx *@
+@* @inject TeamsUserCredential teamsUserCredential *@
+@* @inject MicrosoftTeams MicrosoftTeams *@
 @inject IWebHostEnvironment HostEnvironment
 @inject IConfiguration Configuration
 @inject NavigationManager MyNavigationManager
@@ -19,34 +19,56 @@ else
   <div class="welcome page">
     <div class="narrow page-padding">
       <img src="hello.png" />
-      <h1 class="center">Congratulations@(!String.IsNullOrEmpty(_userName) ? ", " + _userName : "")!</h1>
+      <h2 class="center">Congratulations@(!String.IsNullOrEmpty(_userName) ? ", " + _userName : "")!</h2>
       <p class="center">Your app is running in your @(GetEnvironmentName())</p>
-      <FluentTabs style="width: 80%; justify-content: space-between; margin: 4rem auto;">
-        <FluentTab style="font-size: 14px; min-height: 32px;">1. Build your app locally</FluentTab>
-        <FluentTab>2. Provision and Deploy to the Cloud</FluentTab>
-        <FluentTab>3. Publish to Teams</FluentTab>
+      <br />
+      <h1 class="center">Niko Niko Chart</h1>
+      <p class="center">
+        Measure you and your teams happiness with the Niko Niko chart.
+        <br />
+        <br />
+      </p>
+
+      <FluentTabs Style="width:auto" >
+
+        <FluentTab Label="Chart" id="tab-1" Style="width: 100px">Chart</FluentTab>
+        <FluentTab Label="Legend" id="tab-2" Style="width: 100px">Legend</FluentTab>
+        <FluentTab Label="Build" id="tab-3" Style="width: 100px">Build</FluentTab>
+        <FluentTab Label="Deploy" id="tab-4" Style="width: 150px">Provision and Deploy</FluentTab>
+        <FluentTab Label="Publish" id="tab-5" Style="width: 100px">Publish</FluentTab>
+        @* <FluentTab Label="Chart">Chart</FluentTab> *@
+        @* <FluentTab Label="Build">Build</FluentTab> *@
+        @* <FluentTab Label="Deploy">Provision and Deploy</FluentTab> *@
+        @* <FluentTab Label="Publish">Publish</FluentTab> *@
+        
+
+        @* The TabPanel below are in order of the FluentTabs declaration from above. *@
         <FluentTabPanel>
-          <div style="display:block; width:100%;">
-            <EditCode />
+          <NikoNiko />
+        </FluentTabPanel>
+        
+        <FluentTabPanel>
+          <NikoNikoLegend/>
+        </FluentTabPanel>
+
+        @* These are part of the default template *@
+        <FluentTabPanel>
+          <div style="display: block; width: 100%;">
+            <EditCode/>
             @if (_isInTeams)
             {
-              <CurrentUser UserName="@_userName" />
+              <CurrentUser UserName="@_userName"/>
             }
-            <Graph ErrorMessage="@_errorMessage" />
+            <Graph ErrorMessage="@_errorMessage"/>
           </div>
         </FluentTabPanel>
         <FluentTabPanel>
-          <Deploy />
+          <Deploy/>
         </FluentTabPanel>
         <FluentTabPanel>
-          <Publish />
+          <Publish/>
         </FluentTabPanel>
       </FluentTabs>
     </div>
   </div>
 }
-
-@code {
-
-}
-
