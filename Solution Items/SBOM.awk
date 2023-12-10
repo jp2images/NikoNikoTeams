@@ -17,7 +17,7 @@
 
 
 # Look in the file for the delimiter <PackageReference as a literal pattern for regex.
-# The result is split into tokens automatically labelled $1, $2, $3, etc. ($0 is the whole line)
+# The result is split into tokens automatically labeled $1, $2, $3, etc. ($0 is the whole line)
 # Split each concerned token further into tokens again on the = sign. Write the results into an 
 # named array. 
 # Print the output of the specific array cells. The previous cells [0] and [1] are only spaces.
