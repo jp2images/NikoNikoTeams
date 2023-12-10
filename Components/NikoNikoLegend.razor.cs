@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿namespace NikoNikoTeams.Components;
 
-namespace NikoNikoTeams.Components;
+using Microsoft.AspNetCore.Components;
+using NikoNikoTeams.Entities;
 
 public partial class NikoNikoLegend
 {
@@ -75,21 +76,8 @@ public partial class NikoNikoLegend
       Definition="Feeling especially challenged and rewarded, on top of my game."
     }
   };
-}
-
-public class NikoNikoLegendDataItem
-{
-  public NikoNikoLegendDataItem(string imageSource)
-  {
-    ImageSource = imageSource;
-
-    ImageName = imageSource.Substring(imageSource.LastIndexOf("/") + 1,
-      imageSource.LastIndexOf(".", StringComparison.Ordinal) - imageSource.LastIndexOf("/") - 1);
-  }
-
-  public string ImageSource { get; set; }
-  public string ImageName { get; set; }
-  public int Score { get; set; }
-  public string Definition { get; set; }
 }
+
+
+
 
