@@ -16,10 +16,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\Images\Thumbs.db" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0" />
     <PackageReference Include="Microsoft.Graph" Version="5.6.0" />
     <PackageReference Include="Microsoft.Fast.Components.FluentUI" Version="1.5.3" />
     <PackageReference Include="Microsoft.TeamsFx" Version="2.1.*" />
+    <PackageReference Include="MudBlazor" Version="6.11.1" />
   </ItemGroup>
 
 </Project>

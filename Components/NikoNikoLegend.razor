@@ -1,0 +1,22 @@
+﻿@using MudBlazor
+@using System.Runtime.Versioning
+
+
+<div>
+  <MudGrid>
+    @foreach (var item in NikoNikoLegendItems)
+    {
+      <MudPaper Elevation="3" Style="width: 275px" Class="pl-4 pt-4 pr-4">
+        <MudStack Spacing="0" Style="padding-top: 5px">
+          <MudImage Src="@item.ImageSource" Alt="@item.Definition" Width="50" Height="50" />
+          <MudStack Row="true">
+            <h2><MudText>@item.ImageName</MudText></h2>
+              <MudText>@item.Score</MudText>
+            </MudStack>
+            <MudText>@item.Definition</MudText>
+
+          </MudStack>
+        </MudPaper>
+    }
+  </MudGrid>
+</div>

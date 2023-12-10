@@ -8,6 +8,7 @@ appsettings.Development.json
 
 # User-specific files
 *.user
+Thumbs.db
 
 # Build results
 [Dd]ebug/
@@ -26,3 +27,4 @@ bld/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
+/.idea

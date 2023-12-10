@@ -1,3 +1,4 @@
+using MudBlazor.Services;
 using NikoNikoTeams;
 using NikoNikoTeams.Interop.TeamsSDK;
 
@@ -15,6 +16,7 @@ builder.Services.AddScoped<MicrosoftTeams>();
 builder.Services.AddControllers();
 builder.Services.AddHttpClient("WebClient", client => client.Timeout = TimeSpan.FromSeconds(600));
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddMudServices();
 
 var app = builder.Build();
 
