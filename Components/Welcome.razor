@@ -18,54 +18,48 @@ else
 {
   <div class="welcome page">
     <div class="narrow page-padding">
-      <img src="hello.png" />
+      <img src="hello.png"/>
       <h1 class="center">Congratulations@(!String.IsNullOrEmpty(_userName) ? ", " + _userName : "")!</h1>
       <p class="center">Your app is running in your @(GetEnvironmentName())</p>
-      <FluentTabs style="width: 80%; justify-content: space-between; margin: 4rem auto;">
-        
-        
-        <FluentTab Label="Chart" id="tab-1" Style="width: 100px">Chart</FluentTab>
-        <FluentTab Label="Legend" id="tab-2" Style="width: 100px">Legend</FluentTab>
-        <FluentTab Label="Build" id="tab-3" Style="width: 100px">Build</FluentTab>
-        <FluentTab Label="Deploy" id="tab-4" Style="width: 150px">Provision and Deploy</FluentTab>
-        <FluentTab Label="Publish" id="tab-5" Style="width: 100px">Publish</FluentTab>
-        @* <FluentTab Label="Chart">Chart</FluentTab> *@
-        @* <FluentTab Label="Build">Build</FluentTab> *@
-        @* <FluentTab Label="Deploy">Provision and Deploy</FluentTab> *@
-        @* <FluentTab Label="Publish">Publish</FluentTab> *@
-        
-        @* The TabPanel below are in order of the FluentTabs declaration from above. *@
-        <FluentTabPanel>
-          <NikoNiko />
-        </FluentTabPanel>
-        
-        <FluentTabPanel>
-          <NikoNikoLegend/>
-        </FluentTabPanel>
 
-        @* These are part of the default template *@
+        <FluentTabs style="width: 100%; justify-content: center">
+
+          <FluentTab Label="Chart" id="tab-1" Style="width: 100px">Chart</FluentTab>
+          <FluentTab Label="Legend" id="tab-2" Style="width: 100px">Legend</FluentTab>
+          <FluentTab Label="Build" id="tab-3" Style="width: 100px">Build</FluentTab>
+          <FluentTab Label="Deploy" id="tab-4" Style="width: 150px">Provision and Deploy</FluentTab>
+          <FluentTab Label="Publish" id="tab-5" Style="width: 100px">Publish</FluentTab>
+
+          @* The TabPanel below are in order of the FluentTabs declaration from above. *@
+          <FluentTabPanel>
+            <NikoNiko/>
+          </FluentTabPanel>
+
         <FluentTabPanel>
-          <div style="display: block; width: 100%;">
-            <EditCode/>
-            @if (_isInTeams)
-            {
-              <CurrentUser UserName="@_userName"/>
-            }
-            <Graph ErrorMessage="@_errorMessage"/>
-          </div>
-        </FluentTabPanel>
+            <NikoNikoLegend/>
+          </FluentTabPanel>
+
+          @* These are part of the default template *@
         <FluentTabPanel>
-          <Deploy/>
-        </FluentTabPanel>
+            <div style="display: block; width: 100%;">
+              <EditCode/>
+              @if (_isInTeams)
+              {
+                <CurrentUser UserName="@_userName"/>
+              }
+              <Graph ErrorMessage="@_errorMessage"/>
+            </div>
+          </FluentTabPanel>
         <FluentTabPanel>
-          <Publish/>
-        </FluentTabPanel>
-      </FluentTabs>
+            <Deploy/>
+          </FluentTabPanel>
+        <FluentTabPanel >
+            <Publish/>
+          </FluentTabPanel>
+
+        </FluentTabs>
     </div>
   </div>
-}
 
-@code {
 
 }
-

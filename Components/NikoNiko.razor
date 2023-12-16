@@ -1,18 +1,35 @@
 ﻿@using MudBlazor
 @using System.Runtime.Versioning
+@using Microsoft.Graph.Models
+@using NikoNikoTeams.Entities
 
 
 <div>
   <MudGrid>
-
     @foreach (var item in NikoNikoItems)
     {
-      <MudPaper Elevation="3" Style="width: 275px" Class="pl-4 pt-4 pr-4">
-        <MudStack Row="true" Spacing="0" Style="padding-top: 5px">
-          <MudImage Src="@item.ImageSource" Alt="@item.ImageName" Width="50" Height="50"/>
-          <MudText>@item.ImageName</MudText>
-        </MudStack>
-      </MudPaper>
+      <MudPaper Class="pl-4 pt-4 pr-4 pb-4 ma-1"
+                Elevation="4" 
+                Style="width: 175px">
+        <MudTooltip Arrow="true"
+                    Text="@item.Definition"
+                    Class="p-0 ml-0 mt-4"
+                    Placement="Placement.Top">
+          <MudStack AlignItems="AlignItems.Center"
+                    Row="true"
+                    Spacing="0"
+                    Style="padding-top: 0px">
+
+            <MudImage Alt="@item.ImageName"
+                      Height="50"
+                      Src="@item.ImageSource"
+                      Width="50" />
+
+            <MudText Class="pl-2">@item.ImageName</MudText>
+
+            </MudStack>
+          </MudTooltip>
+        </MudPaper>
     }
   </MudGrid>
 </div>
