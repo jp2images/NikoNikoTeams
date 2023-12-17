@@ -8,28 +8,35 @@
   <MudGrid>
     @foreach (var item in NikoNikoItems)
     {
-      <MudPaper Class="pl-4 pt-4 pr-4 pb-4 ma-1"
-                Elevation="4" 
-                Style="width: 175px">
-        <MudTooltip Arrow="true"
-                    Text="@item.Definition"
-                    Class="p-0 ml-0 mt-4"
-                    Placement="Placement.Top">
-          <MudStack AlignItems="AlignItems.Center"
-                    Row="true"
-                    Spacing="0"
-                    Style="padding-top: 0px">
+      <MudTooltip Arrow="true"
+                  Text="@item.ImageName"
+                  Class="p-0 ml-0 mt-4"
+                  Placement="Placement.Top">
+        <MudStack AlignItems="AlignItems.Center"
+                  Row="true"
+                  Spacing="0"
+                  Style="padding-top: 0px">
 
-            <MudImage Alt="@item.ImageName"
-                      Height="50"
-                      Src="@item.ImageSource"
-                      Width="50" />
-
-            <MudText Class="pl-2">@item.ImageName</MudText>
-
-            </MudStack>
-          </MudTooltip>
-        </MudPaper>
+          <MudImage Alt="@item.ImageName"
+                    Height="50"
+                    Src="@item.ImageSource"
+                    Width="50" />
+        </MudStack>
+      </MudTooltip>
     }
   </MudGrid>
+  
+  <MudDataGrid Items="@NikoNikoItems.Take(4)">
+    <Columns>
+      <PropertyColumn Property="x => x.Number" Title="Monday" />
+      <PropertyColumn Property="x => x.Sign" />
+      <PropertyColumn Property="x => x.Name" />
+      <PropertyColumn Property="x => x.Position" />
+      <PropertyColumn Property="x => x.Molar" Title="Molar mass" />
+    </Columns>
+  </MudDataGrid>
+  
+  
+
+
 </div>
