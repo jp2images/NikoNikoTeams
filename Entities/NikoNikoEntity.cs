@@ -1,12 +1,9 @@
-﻿namespace NikoNikoTeams.Components;
+﻿namespace NikoNikoTeams.Entities;
 
-using Microsoft.AspNetCore.Components;
-using NikoNikoTeams.Entities;
-
-public partial class NikoNikoLegend
+public class NikoNikoEntitiy
 {
-  [Parameter]
-  public List<NikoNikoMood> NikoNikoItems { get; set; } = new()
+
+  public List<NikoNikoMood> Items { get; set; } = new()
   {
 
   // Build a list of predefined objects that will be used to populate the UI
@@ -95,9 +92,5 @@ public partial class NikoNikoLegend
     }
   };
 
-
 }
-
-
-
 

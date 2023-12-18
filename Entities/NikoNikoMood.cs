@@ -1,6 +1,6 @@
 ﻿namespace NikoNikoTeams.Entities;
 
-public class NikoNikoItem
+public class NikoNikoMood
 {
   public string ImageSource { get; set; }
   public string ImageName { get; set; }

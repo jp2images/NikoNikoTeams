@@ -6,7 +6,7 @@
 
 <div>
   <MudGrid>
-    @foreach (var item in NikoNikoItems)
+    @foreach (var item in NikoMood.Items)
     {
       <MudTooltip Arrow="true"
                   Text="@item.ImageName"
@@ -26,17 +26,29 @@
     }
   </MudGrid>
   
-  <MudDataGrid Items="@NikoNikoItems.Take(4)">
-    <Columns>
-      <PropertyColumn Property="x => x.Number" Title="Monday" />
-      <PropertyColumn Property="x => x.Sign" />
-      <PropertyColumn Property="x => x.Name" />
-      <PropertyColumn Property="x => x.Position" />
-      <PropertyColumn Property="x => x.Molar" Title="Molar mass" />
-    </Columns>
-  </MudDataGrid>
   
-  
+  <
+    @using MudBlazor
 
+    <MudTable Items="@items">
+        <MudTableColumn>
+            <Template Context="context">
+                <MudDatePicker Date="@context.Date" PickerVariant="PickerVariant.Static" />
+            </Template>
+        </MudTableColumn>
+    </MudTable>
+
+    @code {
+        public class Item
+        {
+            public DateTime Date { get; set; }
+        }
+
+        List<Item> items = new List<Item>
+        {
+            new Item { Date = DateTime.Now },
+            // Add more items as needed
+        };
+    }
 
 </div>
