@@ -7,11 +7,20 @@ public partial class NikoNiko
 {
 
   [Parameter] public NikoNikoEntitiy NikoMood { get; set; } = new();
+  [Parameter] public List<NikoNikoMood> PickMoodList { get; set; } = new();
 
-  public NikoNiko()
+
+  public void AddMood(NikoNikoMood mood)
   {
-    var myList = NikoMood.Items;
+    PickMoodList.Add(
 
+      new NikoNikoMood
+      {
+        ImageSource = mood.ImageSource,
+        ImageName = mood.ImageName,
+        Score = mood.Score,
+        Definition = mood.Definition
+      });
   }
 }
 

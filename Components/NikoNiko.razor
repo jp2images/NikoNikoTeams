@@ -13,42 +13,45 @@
                   Class="p-0 ml-0 mt-4"
                   Placement="Placement.Top">
         <MudStack AlignItems="AlignItems.Center"
+                  @onclick="(()=>AddMood(item))"
                   Row="true"
                   Spacing="0"
                   Style="padding-top: 0px">
+                  
+          @* <MudButton OnClick="@(()=>AddMood(item))"> *@
 
           <MudImage Alt="@item.ImageName"
                     Height="50"
                     Src="@item.ImageSource"
                     Width="50" />
+          @* </MudButton> *@
         </MudStack>
       </MudTooltip>
+
     }
   </MudGrid>
-  
-  
-  <
-    @using MudBlazor
 
-    <MudTable Items="@items">
-        <MudTableColumn>
-            <Template Context="context">
-                <MudDatePicker Date="@context.Date" PickerVariant="PickerVariant.Static" />
-            </Template>
-        </MudTableColumn>
+  <MudTable Hover="true" Items="@NikoMood.Items.Take(28)">
+    <HeaderContent>
+      <MudTh>Sun</MudTh>
+      <MudTh>Mon</MudTh>
+      <MudTh>Tues</MudTh>
+      <MudTh>Wed</MudTh>
+      <MudTh>Thurs</MudTh>
+      <MudTh>Fri</MudTh>
+      <MudTh>Sat</MudTh>
+    </HeaderContent>
+
+    <RowTemplate>
+      <MudTd DataLabel="Sun">@context.Score</MudTd>
+        <MudTd DataLabel="Mon">@context.Score</MudTd>
+        <MudTd DataLabel="Tues">@context.Score</MudTd>
+        <MudTd DataLabel="Wed">@context.Score</MudTd>
+        <MudTd DataLabel="Thurs">@context.Score</MudTd>
+        <MudTd DataLabel="Fri">@context.Score</MudTd>
+        <MudTd DataLabel="Sat">@context.Score</MudTd>
+      </RowTemplate>
+
     </MudTable>
 
-    @code {
-        public class Item
-        {
-            public DateTime Date { get; set; }
-        }
-
-        List<Item> items = new List<Item>
-        {
-            new Item { Date = DateTime.Now },
-            // Add more items as needed
-        };
-    }
-
-</div>
+  </div>
