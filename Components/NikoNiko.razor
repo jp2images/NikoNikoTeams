@@ -17,7 +17,7 @@
                   Row="true"
                   Spacing="0"
                   Style="padding-top: 0px">
-                  
+
           @* <MudButton OnClick="@(()=>AddMood(item))"> *@
 
           <MudImage Alt="@item.ImageName"
@@ -31,7 +31,10 @@
     }
   </MudGrid>
 
-  <MudTable Hover="true" Items="@NikoMood.Items.Take(28)">
+  <MudTable Hover="true"
+            Items="@MoodList"
+            Class="ma-5">
+
     <HeaderContent>
       <MudTh>Sun</MudTh>
       <MudTh>Mon</MudTh>
@@ -43,15 +46,58 @@
     </HeaderContent>
 
     <RowTemplate>
-      <MudTd DataLabel="Sun">@context.Score</MudTd>
-        <MudTd DataLabel="Mon">@context.Score</MudTd>
-        <MudTd DataLabel="Tues">@context.Score</MudTd>
-        <MudTd DataLabel="Wed">@context.Score</MudTd>
-        <MudTd DataLabel="Thurs">@context.Score</MudTd>
-        <MudTd DataLabel="Fri">@context.Score</MudTd>
-        <MudTd DataLabel="Sat">@context.Score</MudTd>
-      </RowTemplate>
+      <MudTd>
+        <MudImage Alt="@context.ImageName"
+                  Height="50"
+                  Src="@context.ImageSource"
+                  Width="50"/>
+      </MudTd>
+      
+      <MudTd>
+        <MudImage Alt="@context.ImageName"
+                  Height="50"
+                  Src="@context.ImageSource"
+                  Width="50"/>
+      </MudTd>
+      
+      <MudTd>
+        <MudImage Alt="@context.ImageName"
+                  Height="50"
+                  Src="@context.ImageSource"
+                  Width="50"/>
+      </MudTd>
+      
+      <MudTd>
+        <MudImage Alt="@context.ImageName"
+                  Height="50"
+                  Src="@context.ImageSource"
+                  Width="50"/>
+      </MudTd>
+      
+      <MudTd>
+        <MudImage Alt="@context.ImageName"
+                  Height="50"
+                  Src="@context.ImageSource"
+                  Width="50"/>
+      </MudTd>
+      
+      <MudTd>
+        <MudImage Alt="@context.ImageName"
+                  Height="50"
+                  Src="@context.ImageSource"
+                  Width="50"/>
+      </MudTd>
+      
+      <MudTd>
+        <MudImage Alt="@context.ImageName"
+                  Height="50"
+                  Src="@context.ImageSource"
+                  Width="50"/>
+      </MudTd>
 
-    </MudTable>
+    </RowTemplate>
+  </MudTable>
 
-  </div>
+</div>
+
+            
