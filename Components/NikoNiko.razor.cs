@@ -21,60 +21,20 @@ public partial class NikoNiko
   /// </summary>
   public NikoNikoMood PickedEmoji { get; set; }
 
-  private int ColumnNumber;
+  private int loopCounter = 0;
 
   private DayOfWeek _dow;
 
   protected override void OnInitialized()
   {
-
     base.OnInitialized();
-
     _dow = DateOnly.FromDateTime(DateTime.UtcNow).DayOfWeek;
-
   }
 
   public void AddMood(NikoNikoMood mood)
   {
     mood.DateEntered = DateOnly.FromDateTime(DateTime.UtcNow);
-
-
-    for (int i = 0; i < 7; i++)
-    {
-      if (i == ColumnNumber)
-      {
-        MoodList.Add(mood);
-        mood.Index = i;
-        mood.IsObjectInCell = true;
-      }
-      else
-      {
-        MoodList.Add(new NikoNikoMood());
-        //{
-        //  Score = -99,
-        //  ImageName = null, 
-        //  ImageSource = null,
-        //  Definition = null,
-        //  Index = -1,
-        //  IsObjectInCell = false,
-        //  DateEntered = null
-        //});
-        mood.Index = i;
-        mood.IsObjectInCell = false;
-      }
-    }
-
     MoodList.Add(mood);
-
-
-
-    //int index = MoodList.FindLastIndex(i => i.Equals(mood));
-    //if (index != -1)
-    //{
-    //  MoodList[index].Index = index;
-    //  //MoodList[index].IsObjectInCell = true;
-    //}
-
     ;
   }
 

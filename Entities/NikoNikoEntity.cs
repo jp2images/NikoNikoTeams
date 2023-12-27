@@ -31,7 +31,7 @@ public class NikoNikoEntitiy
       ImageSource = "Images/Grimacing.png",
       ImageName = "Grimacing",
       Score = -3,
-      Definition = "I don't agree with the direction or am unhappy with the work"
+      Definition = "I don't agree with the direction or am unhappy with the work."
     },
 
     new NikoNikoMood
@@ -64,7 +64,7 @@ public class NikoNikoEntitiy
       ImageSource = "Images/Slightly Smiling.png",
       ImageName = "Smiling",
       Score = 1,
-      Definition = "Happy with work and tasks"
+      Definition = "Happy with work and tasks."
     },
 
     new NikoNikoMood

@@ -6,6 +6,7 @@
 
 <div>
   <MudGrid>
+    <MudCard Elevation="5">
     @foreach (var item in NikoMood.Items)
     {
       <MudTooltip Arrow="true"
@@ -13,55 +14,45 @@
                   Class="p-0 ml-0 mt-4"
                   Placement="Placement.Top">
         <MudStack AlignItems="AlignItems.Center"
-                  @onclick="(()=>AddMood(item))"
+                  @onclick="(() => AddMood(item))"
                   Row="true"
                   Spacing="0"
                   Style="padding-top: 0px">
           <MudImage Alt="@item.ImageName"
                     Height="50"
                     Src="@item.ImageSource"
-                    Width="50" />
+                    Width="50"/>
         </MudStack>
       </MudTooltip>
     }
+    </MudCard>
   </MudGrid>
-  
-  
-  <MudGrid>
 
-    <MudStack>
-        <MudText>@(_dow)</MudText>
 
-    </MudStack>
+  <MudGrid Class="mt-8">
+@*     @foreach (var day in Enum.GetValues(typeof(DayOfWeek)))
+    {
+      <MudStack Row="true" Class="ma-4">
+        <MudText>@(day)</MudText>
+      </MudStack>
+    } *@
+
+    @foreach (var mood in MoodList)
+    {
+      <MudStack Class="ma-4"
+                AlignItems="AlignItems.Center"
+                Row="true">
+        <MudImage Height="50" 
+                  Src="@mood.ImageSource" 
+                  Width="50" />
+        <MudText>@mood.DateEntered</MudText>
+      </MudStack>
+    }
+
 
   </MudGrid>
-  
 
-  <MudTable Hover="true"
-            Items="@MoodList"
-            Class="ma-5">
-    <HeaderContent>
-      <MudTh Tag="@DayOfWeek.Sunday">Sun</MudTh>
-      <MudTh Tag="@DayOfWeek.Monday">Mon</MudTh>
-      <MudTh Tag="@DayOfWeek.Tuesday">Tues</MudTh>
-      <MudTh Tag="@DayOfWeek.Wednesday">Wed</MudTh>
-      <MudTh Tag="@DayOfWeek.Thursday">Thurs</MudTh>
-      <MudTh Tag="@DayOfWeek.Friday">Fri</MudTh>
-      <MudTh Tag="@DayOfWeek.Saturday">Sat</MudTh>
-    </HeaderContent>
 
-    <RowTemplate>
-
-      <MudTd>
-        <MudImage Alt="@context.ImageName"
-                  Height="50"
-                  Src="@context.ImageSource"
-                  Width="50"/>
-      </MudTd>
-
-    </RowTemplate>
-  </MudTable>
-
-  </div>
+</div>
 
 
