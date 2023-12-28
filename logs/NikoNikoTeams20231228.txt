@@ -1,0 +1,2 @@
+2023-12-28 14:09:25.450 -06:00 [INF] Logging has started
+2023-12-28 14:15:12.674 -06:00 [INF] Logging has started

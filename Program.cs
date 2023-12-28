@@ -1,6 +1,13 @@
 using MudBlazor.Services;
 using NikoNikoTeams;
 using NikoNikoTeams.Interop.TeamsSDK;
+using Serilog;
+
+Log.Logger = new LoggerConfiguration()
+  .MinimumLevel.Debug()
+  .WriteTo.Console()
+  .WriteTo.File("logs\\NikoNikoTeams.txt", rollingInterval: RollingInterval.Day)
+  .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,19 +38,32 @@ else
   app.UseHsts();
 }
 
-app.UseStaticFiles();
-
-app.UseRouting();
-
-app.UseAuthentication();
-app.UseAuthorization();
-
-app.UseEndpoints(endpoints =>
+try
 {
-  endpoints.MapBlazorHub();
-  endpoints.MapFallbackToPage("/_Host");
-  endpoints.MapControllers();
-});
+  app.UseStaticFiles();
 
-app.Run();
+  app.UseRouting();
 
+  app.UseAuthentication();
+  app.UseAuthorization();
+
+  app.UseEndpoints(endpoints =>
+  {
+    endpoints.MapBlazorHub();
+    endpoints.MapFallbackToPage("/_Host");
+    endpoints.MapControllers();
+  });
+
+  Log.Information("Logging has started");
+
+  app.Run();
+}
+
+catch (Exception ex)
+{
+  Log.Fatal(ex, "Host terminated unexpectedly");
+}
+finally
+{
+  Log.CloseAndFlush();
+}
