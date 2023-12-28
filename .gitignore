@@ -9,6 +9,7 @@ appsettings.Development.json
 # User-specific files
 *.user
 Thumbs.db
+[Ll]ogs/
 
 # Build results
 [Dd]ebug/
