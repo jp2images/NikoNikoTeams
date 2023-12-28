@@ -1,4 +1,0 @@
-2023-12-28 14:09:25.450 -06:00 [INF] Logging has started
-2023-12-28 14:15:12.674 -06:00 [INF] Logging has started
-2023-12-28 14:17:38.418 -06:00 [INF] Logging has started
-2023-12-28 14:20:38.266 -06:00 [INF] Logging has started
