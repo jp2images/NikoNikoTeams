@@ -4,6 +4,12 @@ using NikoNikoTeams.Interop.TeamsSDK;
 using Serilog;
 
 Log.Logger = new LoggerConfiguration()
+  .Enrich.WithEnvironmentName()
+  .Enrich.WithEnvironmentUserName()
+  .Enrich.WithMachineName()
+  .Enrich.WithProcessId()
+  .Enrich.WithProcessName()
+  .Enrich.WithThreadId()
   .MinimumLevel.Debug()
   .WriteTo.Console()
   .WriteTo.File("logs\\NikoNikoTeams.txt", rollingInterval: RollingInterval.Day)
